@@ -1,8 +1,6 @@
 1. 注册...
 
-
 2. 登录...
-
 
 3.下个windows端 地址在这里：
 
@@ -50,7 +48,7 @@
 
 点进去以后，如下图，左边出现修改的文件列表，右边是提交注释，大致写一下你修改了什么东西，方便以后出问题可以找到对应的代码版本。点击“commit”按钮就可以提交了。
 
-![commit修改](http://ww1.sinaimg.cn/small/628085d9jw1e31t2jyvjmj.jpg "commit修改")
+![commit修改](http://ww1.sinaimg.cn/large/628085d9jw1e31t2jyvjmj.jpg "commit修改")
 
 到这里还没结束，commit以后还没对远端的项目仓库产生效果，要和远程同步一下，找到那个蓝色的sync按钮，点击就搞定了。
 
