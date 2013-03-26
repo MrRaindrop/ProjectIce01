@@ -19,6 +19,7 @@ public class PlayerMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         
+        // 水平方向移动
         float move = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         transform.Translate(move, 0, 0);
 	}

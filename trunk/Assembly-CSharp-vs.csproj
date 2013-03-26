@@ -44,9 +44,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\script\Event.cs" />
      <Compile Include="Assets\script\MainCamera.cs" />
-     <Compile Include="Assets\script\Manager\EventManager.cs" />
+     <Compile Include="Assets\script\Manager\EnvManager.cs" />
+     <Compile Include="Assets\script\Manager\Event\Event.cs" />
+     <Compile Include="Assets\script\Manager\Event\EventManager.cs" />
      <Compile Include="Assets\script\Manager\ResourceManager.cs" />
      <Compile Include="Assets\script\Player\PlayerMove.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
