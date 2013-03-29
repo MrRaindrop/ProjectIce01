@@ -1,15 +1,21 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 
 namespace Loop
 {
+    // 定义所有的事件类型
+    [FlagsAttribute]
+    enum EventType {
+        None = 0,
+    }
 
+    
     public static class EventManager
     {
 
-        private static EventManager _eventManager;
         private static Queue _eventQueue;
         private static Event[] _eventArray;
 
@@ -37,7 +43,7 @@ namespace Loop
             return ((Event)_eventQueue.Dequeue()).Index;
         }
 
-        public static void AddEventHandler(int eIndex, Loop.Event.Handler handler) {
+        public static void AddEventHandler(uint eIndex, Loop.Event.Handler handler) {
             _eventArray[eIndex].AddHandler(handler);
         }
 
