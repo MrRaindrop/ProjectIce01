@@ -7,15 +7,14 @@ using System.Collections.Generic;
 namespace Loop
 {
     // 定义所有的事件类型
-    [FlagsAttribute]
     enum EventType {
         None = 0,
+        AfterGettingKey = 1,
     }
 
     
     public static class EventManager
     {
-
         private static Queue _eventQueue;
         private static Event[] _eventArray;
 
@@ -46,7 +45,6 @@ namespace Loop
         public static void AddEventHandler(uint eIndex, Loop.Event.Handler handler) {
             _eventArray[eIndex].AddHandler(handler);
         }
-
     }
 
 }
