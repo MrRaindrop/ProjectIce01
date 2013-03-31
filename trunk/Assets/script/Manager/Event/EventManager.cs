@@ -6,12 +6,6 @@ using System.Collections.Generic;
 
 namespace Loop
 {
-    // 定义所有的事件类型
-    enum EventType {
-        None = 0,
-        AfterGettingKey = 1,
-    }
-
     
     public static class EventManager
     {

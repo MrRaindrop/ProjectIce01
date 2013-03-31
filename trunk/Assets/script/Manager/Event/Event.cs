@@ -12,6 +12,8 @@ namespace Loop
 
         private uint _index;    // 事件序号
 
+        private GameObject _associatedObject;
+
         private bool _isFiredOnce;  // 是否曾经已出发
 
         private bool _isValid;  // 是否仍然有效
@@ -27,6 +29,7 @@ namespace Loop
 
         public Event(uint index) {
             _index = index;
+            _associatedObject = null;
             _isFiredOnce = false;
             _isValid = false;
             _firedTimes = 0;
@@ -49,6 +52,11 @@ namespace Loop
         public uint Index {
             get { return _index; }
             set { _index = value; }
+        }
+
+        public GameObject AssociatedObject {
+            get { return _associatedObject; }
+            set { _associatedObject = value; }
         }
 
         public bool IsFiredOnce {

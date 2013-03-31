@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class Init : MonoBehaviour {
@@ -15,9 +16,22 @@ public class Init : MonoBehaviour {
 	
 	}
 
+    // 初始化事件列表
     private void InitEventArray() {
 
-        Loop.EventManager.EventArray[(int)Loop.EventType.AfterGettingKey] = new Loop.Event((int)Loop.EventType.AfterGettingKey);
+        Debug.Log("-- Func:InitEventArray --");
+
+        Loop.EventManager.EventArray = new Loop.Event[Loop.EventConstants.TOTAL_NUM];
+
+        Loop.EventManager.EventArray[0] = null;
+
+        for (uint i = 1; i <= Loop.EventConstants.KEY_NUM; i++) {
+            Loop.EventManager.EventArray[i] = new Loop.Event(i);
+        }
+
+        for (uint i = 101; i < 101 + Loop.EventConstants.GATE_NUM; i++) {
+            Loop.EventManager.EventArray[i] = new Loop.Event(i);
+        }
      
     }
 }
