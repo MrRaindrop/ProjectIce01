@@ -16,10 +16,23 @@ public class Init : MonoBehaviour {
 	
 	}
 
-    // 初始化事件列表
+    // 初始化所有的Flag标志
+    private void InitFlagArray() {
+
+        Debug.Log("-- Func : InitFlagArray --");
+
+        Loop.FlagManager.FlagArray = new bool[Loop.FlagConstants.TOTAL_NUM];
+
+        for(int i = 0; i < Loop.FlagConstants.TOTAL_NUM; i++){
+            Loop.FlagManager.ResetFlag(i);
+        }
+
+    }
+
+    // 初始化事件索引列表
     private void InitEventArray() {
 
-        Debug.Log("-- Func:InitEventArray --");
+        Debug.Log("-- Func : InitEventArray --");
 
         Loop.EventManager.EventArray = new Loop.Event[Loop.EventConstants.TOTAL_NUM];
 

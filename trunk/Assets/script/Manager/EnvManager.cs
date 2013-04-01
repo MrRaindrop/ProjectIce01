@@ -11,5 +11,4 @@ namespace Loop
         public static float player_jumpSpeed = 10.0f;
         public static float gravity = 20.0f;
     }
-
 }

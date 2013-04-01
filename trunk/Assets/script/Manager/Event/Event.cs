@@ -89,14 +89,14 @@ namespace Loop
         }
 
         // 增加某个事件(的序列号)做为先序条件之一
-        public void AddPrevEvents(int index){
+        public void AddPrevEvents(uint index){
             if (_prevEvents.Contains(index))
                 return;
             _prevEvents.Add(index);
         }
 
         // 从先序条件中去掉某个事件(的序列号)
-        public void RmvPrevEvents(int index){
+        public void RmvPrevEvents(uint index){
             if (_prevEvents.Contains(index))
                 _prevEvents.Remove(index);
         }
@@ -113,8 +113,9 @@ namespace Loop
         }
 
         // 测试所有条件事件是否都仍然有效
-        public bool isAllPrevEventsValid()
+        public bool IsAllPrevEventsValid()
         {
+            Debug.Log("-- Func : IsAllPrevEventsValid --");
             if (_prevEvents.Count == 0)
                 return true;
             foreach (uint index in _prevEvents)
@@ -125,6 +126,7 @@ namespace Loop
             return true;
         }
 
+        // 添加事件处理
         public void AddHandler(Handler h) {
             _handlers += h;
         }
