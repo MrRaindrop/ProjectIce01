@@ -54,6 +54,9 @@ public class TriggerEvent : MonoBehaviour {
         
         if (other.gameObject.CompareTag("Player")) {
 
+            if (eventType == Loop.EventType.None)
+                return;
+
             // ²âÊÔÌõ¼ş
             if (Loop.EventManager.EventArray[(int)eventType].IsAllPrevEventsValid()) {
                 // do something

@@ -46,7 +46,8 @@
   <ItemGroup>
      <Compile Include="Assets\script\Init.cs" />
      <Compile Include="Assets\script\MainCamera.cs" />
-     <Compile Include="Assets\script\Manager\EnvManager.cs" />
+     <Compile Include="Assets\script\Manager\Environment\EnvConstants.cs" />
+     <Compile Include="Assets\script\Manager\Environment\EnvManager.cs" />
      <Compile Include="Assets\script\Manager\Event\Event.cs" />
      <Compile Include="Assets\script\Manager\Event\EventConstants.cs" />
      <Compile Include="Assets\script\Manager\Event\EventManager.cs" />
@@ -57,6 +58,10 @@
      <Compile Include="Assets\script\Manager\ResourceManager.cs" />
      <Compile Include="Assets\script\Manager\Triggers\TriggerEvent.cs" />
      <Compile Include="Assets\script\Manager\Triggers\TriggerFlags.cs" />
+     <Compile Include="Assets\script\Manager\World\World.cs" />
+     <Compile Include="Assets\script\Manager\World\WorldConstants.cs" />
+     <Compile Include="Assets\script\Manager\World\WorldManager.cs" />
+     <Compile Include="Assets\script\Manager\World\WorldName.cs" />
      <Compile Include="Assets\script\Player\PlayerMove.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Glass Refraction (Pro Only)\Sources\Shaders\Glass-Stained-BumpDistort.shader" />
