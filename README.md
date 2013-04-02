@@ -1,4 +1,4 @@
-ProjectIce01
+Project Loop
 ============
 
 Another singleplayer-adventure indie game.
