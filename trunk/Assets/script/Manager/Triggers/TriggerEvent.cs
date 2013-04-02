@@ -61,8 +61,6 @@ public class TriggerEvent : MonoBehaviour {
             if (Loop.EventManager.EventArray[(int)eventType].IsAllPrevEventsValid()) {
                 // do something
                 Loop.EventManager.FireEvent(Loop.EventManager.EventArray[(int)eventType]);
-                Loop.EventManager.EventArray[(int)eventType].DelayPeriod = delayPeriod;
-                Loop.EventManager.EventArray[(int)eventType].ExpiredPeriod = expiredPeriod;
             }
 
         }

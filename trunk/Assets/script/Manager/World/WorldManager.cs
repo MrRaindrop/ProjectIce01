@@ -9,8 +9,7 @@ namespace Loop
         private static WorldName _currentWorld;    // 当前的世界名称
 
         // 获取当前的世界编号
-        public static int GetCurrentWorldIndex()
-        {
+        public static int GetCurrentWorldIndex() {
             return (int)_currentWorld;
         }
 
