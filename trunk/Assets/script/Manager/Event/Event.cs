@@ -116,6 +116,7 @@ namespace Loop
         public bool IsAllPrevEventsValid()
         {
             Debug.Log("-- Func : IsAllPrevEventsValid --");
+
             if (_prevEvents.Count == 0)
                 return true;
             foreach (uint index in _prevEvents)

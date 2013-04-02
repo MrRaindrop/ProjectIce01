@@ -21,6 +21,18 @@ namespace Loop
 
         // methods
 
+        // 初始化所有的Flag标志，全部设置为false
+        public static void InitFlagArray() {
+
+            Debug.Log("-- Func : InitFlagArray --");
+
+            _flagArray = new bool[FlagConstants.TOTAL_NUM];
+
+            for (int i = 0; i < FlagConstants.TOTAL_NUM; i++) {
+                ResetFlag(i);
+            }
+        }
+
         // 获取特定Flag的值
         public static bool GetFlag(int flagIndex) {
             return _flagArray[flagIndex];
