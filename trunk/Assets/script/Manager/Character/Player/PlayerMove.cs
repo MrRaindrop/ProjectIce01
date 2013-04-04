@@ -30,6 +30,7 @@ public class PlayerMove : MonoBehaviour {
         moveSpeed = Loop.EnvManager.player_moveSpeed;
         runSpeed = Loop.EnvManager.player_runSpeed;
         jumpSpeed = Loop.EnvManager.player_jumpSpeed;
+        
         gravity = Loop.EnvManager.gravity;
         _moveDirection = Vector3.zero;
 

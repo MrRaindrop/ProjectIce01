@@ -9,7 +9,7 @@ namespace Loop
     
     public static class EventManager
     {
-        private static Queue _eventQueue;
+        private static Queue<uint> _eventQueue;
         private static Event[] _eventArray;
 
         // getter and setter
@@ -23,8 +23,8 @@ namespace Loop
 
         public static void FireEvent(Event e) {
             e.IsFiredOnce = true;
-            e.IsValid = true;
             e.FiredTimes++;
+            PushEventQueue(e);
         }
 
         public static void PushEventQueue(Event e)
@@ -33,7 +33,13 @@ namespace Loop
         }
 
         public static uint PopEventQueue(){
-            return ((Event)_eventQueue.Dequeue()).Index;
+            if(_eventQueue.Count != 0)
+                return _eventQueue.Dequeue();
+            return 0;
+        }
+
+        public static bool IsEventQueueEmpty() {
+            return _eventQueue.Count == 0;
         }
 
         public static void AddEventHandler(uint eIndex, Loop.Event.Handler handler) {
@@ -50,7 +56,9 @@ namespace Loop
 
             /* TODO: 预设所有事件的序列号、延迟触发时间、消亡时间 */
 
-            for (uint i = 1; i <= EventConstants.KEY_NUM; i++) {
+            _eventArray[(int)EventType.GetKey1] = new Event(1, 2.0f, 2.0f);
+
+            for (uint i = 2; i <= EventConstants.KEY_NUM; i++) {
                 _eventArray[i] = new Event(i);
             }
 
@@ -59,26 +67,24 @@ namespace Loop
             }
         }
 
+        // 初始化事件队列
+        public static void InitEventQueue() {
+
+            Debug.Log("-- Func : InitEventQueue --");
+
+            _eventQueue = new Queue<uint>();
+        }
+
         // 绑定事件处理器
         public static void InitBindingHandlers() {
             
             /* TODO: 绑定处理器到事件，可绑定多个 */
 
+
             // Event GetKey1 for Example
             AddEventHandler((uint)EventType.GetKey1, delegate(){
-
-                if (EventArray[(uint)EventType.GetKey1].ExpiredPeriod != 0) {
-                    // TODO: ....unity coroutines & yields
-                    // after ExpiredPeriod seconds...
-                    {
-                        EventArray[(uint)EventType.GetKey1].IsValid = false;
-                    }
-                }
-
-                if (EventArray[(uint)EventType.GetKey1].DelayPeriod != 0) {
-                    // TODO: ....unity coroutines & yields
-                    Debug.Log("Player Get Key 1!");
-                }
+                               
+                Debug.Log("Player Get Key 1!");
 
             });
 

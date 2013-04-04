@@ -2,6 +2,8 @@ using UnityEngine;
 using System;
 using System.Collections;
 
+[AddComponentMenu("Loop/Trigger Events")]
+
 public class TriggerEvent : MonoBehaviour {
 
     public Loop.EventType eventType = Loop.EventType.None;  // 当前触发事件类型
@@ -14,8 +16,6 @@ public class TriggerEvent : MonoBehaviour {
     //public bool isFiredOnce;  // 是否曾经已出发
     //public bool isValid;  // 是否仍然有效
     //public uint firedTimes;   // 已触发次数
-    public float delayPeriod;     // 延迟处理时间(s)
-    public float expiredPeriod;     // 失效时间(s)
 
     void Start() {
 
@@ -65,4 +65,11 @@ public class TriggerEvent : MonoBehaviour {
 
         }
     }
+
+    void OnDrawGizmos() {
+        Gizmos.color = new Color(0.7f, 0f, 0.9f);
+        Gizmos.DrawSphere(transform.position + new Vector3(0.5f, 1, 0), 0.2f);
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0.5f, 1, 0));
+    }
+
 }

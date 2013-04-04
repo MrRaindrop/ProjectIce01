@@ -56,9 +56,11 @@ namespace Loop
         }
 
         // 测试已经保存的Flags数组是否与欲测试的flags(flagsToTest)一致
-        public static bool TestFlags(bool[] flagsToTest) {
+        public static bool TestFlags(bool[] flagsToTest, bool[] flagsValueToTest) {
             for (int i = 0; i < Loop.FlagConstants.TOTAL_NUM; i++) {
-                if (flagsToTest[i] == true && _flagArray[i] == true)
+                if (flagsToTest[i] && flagsValueToTest[i] == _flagArray[i])
+                    continue;
+                else if (!flagsToTest[i])
                     continue;
                 else
                     return false;

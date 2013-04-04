@@ -13,8 +13,8 @@ namespace Loop
         private bool _isFiredOnce;  // 是否曾经已出发
         private bool _isValid;  // 是否仍然有效
         private uint _firedTimes;   // 已触发次数
-        private float _delayPeriod;     // 延迟处理时间(s)      
-        private float _expiredPeriod; // 失效时间(s)    
+        private float _delayPeriod;     // 延迟处理时间(s) - 立即触发，延时处理      
+        private float _expiredPeriod; // 失效时间(s)
         private ArrayList _prevEvents;  // 先序条件（事件序号列表）
 
         // 事件的构造函数，指定事件的序号
@@ -116,6 +116,11 @@ namespace Loop
         // 添加事件处理
         public void AddHandler(Handler h) {
             _handlers += h;
+        }
+
+        // 执行事件处理函数
+        public void ExecHanlders(){
+            _handlers();
         }
 
     }

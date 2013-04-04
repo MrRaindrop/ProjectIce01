@@ -44,8 +44,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\script\Init.cs" />
      <Compile Include="Assets\script\MainCamera.cs" />
+     <Compile Include="Assets\script\Manager\Character\Character.cs" />
+     <Compile Include="Assets\script\Manager\Character\CharacterManager.cs" />
+     <Compile Include="Assets\script\Manager\Character\Player\Player.cs" />
+     <Compile Include="Assets\script\Manager\Character\Player\PlayerMove.cs" />
      <Compile Include="Assets\script\Manager\Environment\EnvConstants.cs" />
      <Compile Include="Assets\script\Manager\Environment\EnvManager.cs" />
      <Compile Include="Assets\script\Manager\Event\Event.cs" />
@@ -62,7 +65,7 @@
      <Compile Include="Assets\script\Manager\World\WorldConstants.cs" />
      <Compile Include="Assets\script\Manager\World\WorldManager.cs" />
      <Compile Include="Assets\script\Manager\World\WorldName.cs" />
-     <Compile Include="Assets\script\Player\PlayerMove.cs" />
+     <Compile Include="Assets\script\Observer.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Glass Refraction (Pro Only)\Sources\Shaders\Glass-Stained-BumpDistort.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />
