@@ -1,0 +1,11 @@
+添加事件
+--------
+1. 在EventType.cs中添加一个枚举量，写好名称和对应的序号
+2. 如果上面的序号已经超过EventConstants.cs中的TOTAL_NUM值，则扩大该常数
+3. 在EventManager.cs的InitEventArray方法中，手动添加初始化该事件的代码（一行）
+4. 在EventManager.cs的InitBindingHandlers方法中，添加绑定该事件的处理器代码
+
+添加标志
+--------
+1. 在FlagType.cs中添加新标志的名称以及序号
+2. 如果上面的序号已经超过FlagConstants.cs中的TOTAL_NUM值，则扩大该常数
