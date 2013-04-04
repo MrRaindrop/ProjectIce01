@@ -6,15 +6,19 @@ namespace Loop
 
     public static class EnvManager
     {
+        public static float playerBaseMoveSpeed = 10.0f;
+        public static float playerBaseRunSpeed = 20.0f;
+        public static float playerBaseJumpSpeed = 10.0f;
 
-        public static float player_moveSpeed = 10.0f;
-        public static float player_runSpeed = 20.0f;
-        public static float player_jumpSpeed = 10.0f;
+        public static float playerCurrentMoveSpeed = 10.0f;
+        public static float playerCurrentRunSpeed = 20.0f;
+        public static float playerCurrentJumpSpeed = 10.0f;
+        
         public static float gravity = 20.0f;
         public static GravityLevel currentGLevel = GravityLevel.Level2;
 
 
-        public static float[] GravityLevelArray = new float[6]{
+        public static float[] gravityLevelArray = new float[6]{
             EnvConstants.G_LEVEL_0,
             EnvConstants.G_LEVEL_1,
             EnvConstants.G_LEVEL_2,
@@ -30,7 +34,7 @@ namespace Loop
                 return;
             }
 
-            gravity = GravityLevelArray[gravityLevel];
+            gravity = gravityLevelArray[gravityLevel];
             currentGLevel = (GravityLevel)gravityLevel;
         }
 
@@ -40,7 +44,7 @@ namespace Loop
         }
 
         // 提高g等级，成功返回当前g等级，失败返回-1
-        public static int raiseGLevel() {
+        public static int RaiseGLevel() {
             if((int)currentGLevel != EnvConstants.G_LEVEL_MAX){
                 currentGLevel++;
                 return (int)currentGLevel;
@@ -49,13 +53,32 @@ namespace Loop
         }
 
         // 降低g等级，成功返回当前g等级，失败返回-1
-        public static int lowerGLevel() {
+        public static int LowerGLevel() {
             if ((int)currentGLevel != EnvConstants.G_LEVEL_MIN) {
                 currentGLevel--;
                 return (int)currentGLevel;
             }
             else
                 return -1;
+        }
+
+        // 根据环境数值计算角色能力值
+        public static void CalculatePlayerCapability(){
+
+            /* TODO : 根据环境计算 */
+
+            // playerCurrentJumpSpeed = ...
+            // playerCurrentMoveSpeed = ...
+            // playerCurrentRunSpeed = ...
+
+            Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
+            Player p = ob.GetCurrentPlayer();
+            if (p != null) {
+                p.MoveSpeed = playerCurrentMoveSpeed;
+                p.RunSpeed = playerCurrentRunSpeed;
+                p.JumpSpeed = playerCurrentJumpSpeed;
+            }
+
         }
     }
 

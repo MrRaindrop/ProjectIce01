@@ -10,7 +10,7 @@ namespace Loop
 
         private Handler _handlers;  // 事件处理函数集
         private uint _index;    // 事件序号
-        private bool _isFiredOnce;  // 是否曾经已出发
+        private bool _isFiredOnce;  // 是否曾经触发过
         private bool _isValid;  // 是否仍然有效
         private uint _firedTimes;   // 已触发次数
         private float _delayPeriod;     // 延迟处理时间(s) - 立即触发，延时处理      

@@ -12,9 +12,12 @@ public class PlayerMove : MonoBehaviour {
 
     private CharacterController ct;
 
-    private GameObject camMap;
-    private GameObject camMain;
+    private GameObject _camMap;
+    private GameObject _camMain;
 
+    private GameObject _obGameObject;
+    private Observer _observer;
+    private Loop.Player _currentPlayer;
 
     public bool _isMapFlag = false;     // 地图切换状态标志（是否处于大地图状态）
     public bool _playerAvailable = true;      // 角色是否可以行动（角色静默状态标志）
@@ -27,22 +30,26 @@ public class PlayerMove : MonoBehaviour {
 
     void Start() {
 
-        moveSpeed = Loop.EnvManager.player_moveSpeed;
-        runSpeed = Loop.EnvManager.player_runSpeed;
-        jumpSpeed = Loop.EnvManager.player_jumpSpeed;
+        _obGameObject = GameObject.FindWithTag("Observer");
+        _observer = _obGameObject.GetComponent<Observer>();
+        _currentPlayer = _observer.GetCurrentPlayer();
+
+        moveSpeed = _currentPlayer.MoveSpeed;
+        runSpeed = _currentPlayer.RunSpeed;
+        jumpSpeed = _currentPlayer.JumpSpeed;
         
         gravity = Loop.EnvManager.gravity;
         _moveDirection = Vector3.zero;
 
         ct = GetComponent<CharacterController>();
 
-        camMap = GameObject.Find("CameraMap");
-        camMain = GameObject.Find("CameraMain");
+        _camMap = GameObject.Find("CameraMap");
+        _camMain = GameObject.Find("CameraMain");
 
-        if (camMain != null)
-            camMain.camera.enabled = true;
-        if (camMap != null)
-            camMap.camera.enabled = false;
+        if (_camMain != null)
+            _camMain.camera.enabled = true;
+        if (_camMap != null)
+            _camMap.camera.enabled = false;
 
         _isMapFlag = false;
 
@@ -78,19 +85,19 @@ public class PlayerMove : MonoBehaviour {
 
                 if (_isMapFlag == false)
                 {
-                    if (camMain != null)
-                        camMain.camera.enabled = false;
-                    if (camMap != null)
-                        camMap.camera.enabled = true;
+                    if (_camMain != null)
+                        _camMain.camera.enabled = false;
+                    if (_camMap != null)
+                        _camMap.camera.enabled = true;
                     _isMapFlag = true;
 
                 }
                 else if (_isMapFlag == true)
                 {
-                    if (camMain != null)
-                        camMain.camera.enabled = true;
-                    if (camMap != null)
-                        camMap.camera.enabled = false;
+                    if (_camMain != null)
+                        _camMain.camera.enabled = true;
+                    if (_camMap != null)
+                        _camMap.camera.enabled = false;
                     _isMapFlag = false;
 
                 }

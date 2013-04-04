@@ -40,6 +40,7 @@ public class TriggerFlags : MonoBehaviour {
         // 测试是否满足条件flag
         if (Loop.FlagManager.TestFlags(conditionFlags, conditionFlagsValue)) {
 
+            // 执行标志设置和更改逻辑
             for (int i = 0; i < Loop.FlagConstants.TOTAL_NUM; i++) {
 
                 if (isToReverse[i])
