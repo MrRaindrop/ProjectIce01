@@ -61,7 +61,9 @@
      <Compile Include="Assets\script\Manager\Flag\FlagConstants.cs" />
      <Compile Include="Assets\script\Manager\Flag\FlagManager.cs" />
      <Compile Include="Assets\script\Manager\Flag\FlagType.cs" />
+     <Compile Include="Assets\script\Manager\NewBehaviourScript.cs" />
      <Compile Include="Assets\script\Manager\ResourceManager.cs" />
+     <Compile Include="Assets\script\Manager\Test\Test.cs" />
      <Compile Include="Assets\script\Manager\Triggers\TriggerEvent.cs" />
      <Compile Include="Assets\script\Manager\Triggers\TriggerFlags.cs" />
      <Compile Include="Assets\script\Manager\World\World.cs" />
@@ -69,6 +71,7 @@
      <Compile Include="Assets\script\Manager\World\WorldManager.cs" />
      <Compile Include="Assets\script\Manager\World\WorldName.cs" />
      <Compile Include="Assets\script\Observer.cs" />
+     <Compile Include="Assets\script\Utility\PlayerPrefsX.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Glass Refraction (Pro Only)\Sources\Shaders\Glass-Stained-BumpDistort.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendOneOne.shader" />

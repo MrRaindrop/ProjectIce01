@@ -9,7 +9,7 @@ namespace Loop {
         public Player() {
 
             IsAlive = true;
-            GameObject = GameObject.FindWithTag("Player");
+            AttachedGameObject = GameObject.FindWithTag("Player");
 
             MoveSpeed = CharacterManager.playerCurrentMoveSpeed;
             RunSpeed = CharacterManager.playerCurrentRunSpeed;
@@ -17,6 +17,7 @@ namespace Loop {
 
         }
 
+        // 切换世界
         public void SwitchToWorld(WorldName name) {
             
             if ((int)name < 0 || (int)name >= WorldConstants.WORLDS_NUM) {
@@ -24,7 +25,19 @@ namespace Loop {
                 return;
             }
 
-            GameObject.GetComponent<PlayerMove>().MoveToWorld(name);
+            AttachedGameObject.GetComponent<PlayerMove>().MoveToWorld(name);
+        }
+
+        // 保存角色数据
+        public void  SaveData() {
+            PlayerPrefsX.SetBool("isAlive", _isAlive);
+            PlayerPrefsX.SetBool("isAvailable", _isAvailable);
+        }
+
+        // 装载角色数据
+        public void  LoadData() {
+            _isAlive = PlayerPrefsX.GetBool("isAlive");
+            _isAvailable = PlayerPrefsX.GetBool("isAvailable");
         }
 
         // 攻击
@@ -34,37 +47,42 @@ namespace Loop {
 
         // 死亡
         public override void Die() {
+            DisableInput();
             Debug.Log("Player Die!");
+
+            // TODO ...
         }
 
         // 查看角色是否可以行动
         public override bool IsAvailable() {
-            return GameObject.GetComponent<PlayerMove>().IsPlayerAvailable();
+            return _isAvailable;
         }
 
         // 禁止角色行动
-        public override void DisableAct() {
-            GameObject.GetComponent<PlayerMove>().DisablePlayerAct();
+        public override void DisableAct(){
+            base.DisableAct();
+            Debug.Log("-- Func : Player.DisableAct --");
         }
 
         // 恢复角色行动
         public override void EnableAct() {
-            GameObject.GetComponent<PlayerMove>().EnablePlayerAct();
+            base.EnableAct();
+            Debug.Log("-- Func : Player.EnableAct --");
         }
 
         // 是否响应玩家输入
         public bool IsInputAvailable() {
-            return GameObject.GetComponent<PlayerMove>().IsInputAvailable();
+            return AttachedGameObject.GetComponent<PlayerMove>().IsInputAvailable();
         }
 
         // 不接受玩家输入
         public void DisableInput() {
-            GameObject.GetComponent<PlayerMove>().DisableInput();
+            AttachedGameObject.GetComponent<PlayerMove>().DisableInput();
         }
 
         // 接受玩家输入
         public void EnableInput() {
-            GameObject.GetComponent<PlayerMove>().EnableInput();
+            AttachedGameObject.GetComponent<PlayerMove>().EnableInput();
         }
 
     }

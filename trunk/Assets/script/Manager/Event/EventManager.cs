@@ -65,6 +65,36 @@ namespace Loop
             _eventArray[eIndex].AddHandler(handler);
         }
 
+        // 保存事件相关的数据
+        public static void SaveEventData() {
+
+            int eventQueueCount = _eventQueue.Count;
+            if (eventQueueCount > 0) {
+                int[] array = new int[eventQueueCount];
+                for (int i = 0; i < eventQueueCount; i++)
+                    array[i] = (int)_eventQueue.Dequeue();
+
+                PlayerPrefs.SetInt("eventQueueCount", eventQueueCount);
+                PlayerPrefsX.SetIntArray("eventQueue", array);
+            } else {
+                PlayerPrefs.SetInt("eventQueueCount", 0);
+            }
+        }
+
+        // 装载事件相关的数据
+        public static void LoadEventData()
+        {
+            int eventQueueCount = PlayerPrefs.GetInt("eventQueueCount");
+            if (eventQueueCount > 0) {
+                int[] array = new int[eventQueueCount];
+                array = PlayerPrefsX.GetIntArray("eventQueue");
+
+                for (int i = 0; i < eventQueueCount; i++)
+                    _eventQueue.Enqueue((uint)array[i]);
+            }
+            
+        }
+
         // 初始化事件索引列表
         public static void InitEventArray() {
 

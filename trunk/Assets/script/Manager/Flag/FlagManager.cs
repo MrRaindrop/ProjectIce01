@@ -11,7 +11,6 @@ namespace Loop
         
         private static bool[] _flagArray;
 
-
         // properties
 
         public static bool[] FlagArray {
@@ -66,6 +65,20 @@ namespace Loop
                     return false;
             }
             return true;
+        }
+
+        // 保存标志数据
+        public static void SaveFlagData() {
+
+            Loop.PlayerPrefsX.SetBoolArray("flagArray", _flagArray);
+
+        }
+
+        // 装载标志数据
+        public static void LoadFlagData() {
+
+            _flagArray = Loop.PlayerPrefsX.GetBoolArray("flagArray", false, (int)FlagConstants.TOTAL_NUM);
+
         }
 
     }

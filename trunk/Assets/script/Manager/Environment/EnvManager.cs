@@ -55,6 +55,21 @@ namespace Loop
                 return -1;
         }
 
+        // 保存环境相关数据
+        public static void SaveEnvData() {
+
+            PlayerPrefs.SetFloat("gravity", gravity);
+            PlayerPrefs.SetInt("currentGLevel", (int)currentGLevel);
+
+        }
+
+        // 装载环境相关数据
+        public static void LoadEnvData() {
+
+            gravity = PlayerPrefs.GetFloat("gravity");
+            currentGLevel = (GravityLevel)PlayerPrefs.GetInt("currentGLevel");
+        }
+
     }
 
     public enum GravityLevel{

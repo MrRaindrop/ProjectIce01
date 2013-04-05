@@ -20,8 +20,7 @@ public class PlayerMove : MonoBehaviour {
     private Loop.Player _currentPlayer;     // Player类的当前实例化对象
 
     public bool _isMapFlag = false;     // 地图切换状态标志（是否处于大地图状态）
-    public bool _playerAvailable = true;      // 角色是否可以行动（角色静默状态标志）
-    public bool _inputAvailable = true;      // 是否响应输入（按键静默状态标志）
+    public bool _inputAvailable = false;      // 是否响应输入（按键静默状态标志）
 
 	// Use this for initialization
 	void Awake () {
@@ -38,6 +37,10 @@ public class PlayerMove : MonoBehaviour {
         moveSpeed = _currentPlayer.MoveSpeed;
         runSpeed = _currentPlayer.RunSpeed;
         jumpSpeed = _currentPlayer.JumpSpeed;
+
+        // 角色开始行动
+        _currentPlayer.EnableAct();
+        _currentPlayer.EnableInput();
         
         gravity = Loop.EnvManager.gravity;
         _moveDirection = Vector3.zero;
@@ -54,7 +57,6 @@ public class PlayerMove : MonoBehaviour {
 
         _isMapFlag = false;
 
-        _playerAvailable = true;
         _inputAvailable = true;
         
     }
@@ -63,7 +65,7 @@ public class PlayerMove : MonoBehaviour {
 
         if (_inputAvailable) {
 
-            if (_playerAvailable) {
+            if (_currentPlayer.IsAvailable()) {
                 
                 // 侦测跳跃按钮输入
                 if (ct.isGrounded)
@@ -115,17 +117,17 @@ public class PlayerMove : MonoBehaviour {
 
     // 查看角色是否可以行动
     public bool IsPlayerAvailable() {
-        return _playerAvailable;
+        return _currentPlayer.IsAvailable();
     }
 
     // 禁止角色行动
     public void DisablePlayerAct() {
-        _playerAvailable = false;
+        _currentPlayer.DisableAct();
     }
 
     // 恢复角色行动
     public void EnablePlayerAct() {
-        _playerAvailable = true;
+        _currentPlayer.EnableAct();
     }
 
     // 是否响应玩家输入

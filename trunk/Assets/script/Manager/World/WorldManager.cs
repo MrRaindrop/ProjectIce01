@@ -95,6 +95,22 @@ namespace Loop
                 return -1;
         }
 
+        // 保存世界数据
+        public static void SaveWorldData() {
+
+            PlayerPrefs.SetInt("prevWorld", (int)_prevWorld);
+            PlayerPrefs.SetInt("currentWorld", (int)_currentWorld);
+
+        }
+
+        // 装载世界数据
+        public static void LoadWorldData() {
+
+            _prevWorld = (WorldName)PlayerPrefs.GetInt("prevWorld");
+            _currentWorld = (WorldName)PlayerPrefs.GetInt("currentWorld");
+
+        }
+
         // 初始化世界数组
         public static void InitWordArray() {
             

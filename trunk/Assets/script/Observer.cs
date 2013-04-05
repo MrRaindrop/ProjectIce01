@@ -1,6 +1,6 @@
 
 /* Observer对象: 从头到尾一直存在于游戏中
- * 作用：初始化，处理事件队列 */
+ * 作用：初始化，处理事件队列，保存和装载 */
 
 using UnityEngine;
 using System;
@@ -13,14 +13,16 @@ public class Observer : MonoBehaviour {
 
     void Awake() {
 
-        InitGame();
-        CalcPlayerCap();
-        InitPlayer();
+        Init();
 
     }
 
 	// Use this for initialization
 	void Start () {
+
+        _currentPlayer.AttachedGameObject.AddComponent<PlayerMove>();
+        _currentPlayer.EnableAct();
+        _currentPlayer.EnableInput();
 
 	}
 	
@@ -63,7 +65,28 @@ public class Observer : MonoBehaviour {
         }
     }
 
-    public void InitGame() {
+    // 初始化新游戏
+    private void Init() {
+
+        InitGameInfra();
+        CalcPlayerCap();
+        InitPlayer();
+
+    }
+
+    // 初始化并装载游戏
+    private void InitAndLoadGameData() {
+
+        // 初始化新游戏
+        Init();
+
+        // 装载游戏数据
+        LoadGameData();
+
+    }
+
+    // 初始化游戏基础设施
+    public void InitGameInfra() {
 
         // 初始化所有的标志
         Loop.FlagManager.InitFlagArray();
@@ -124,31 +147,56 @@ public class Observer : MonoBehaviour {
     // 游戏暂停
     public void PauseGame(){
 
+        // 停止输入
+
+        // 停止角色行动
+
+        // pause是同步事件
+
     }
 
     // 游戏保存
-    public void SaveGame() {
+    public IEnumerator SaveGame() {
 
         Debug.Log("-- Func : Observer.SaveGame() --");
 
-        /* TODO : 保存 */ 
+        // TODO : 保存确认对话框
+        
+        // TODO : 摄像机效果
+
+        SaveGameData();
+
+        // TODO : 摄像机效果
+
+        yield return null;
+        
     }
 
     // 切换世界
     public void SwitchWorld(Loop.WorldName targetWorld) {
 
+        Debug.Log("-- Func : Observer.SwitchWorld --");
+
         _currentPlayer.DisableInput();
 
-        StartCoroutine(WaitAndSwitchWorld(targetWorld, Loop.WorldConstants.TIME_BEFORE_SWITCH));
+        StartCoroutine(SaveAndSwitch(targetWorld));
+    }
+
+    private IEnumerator SaveAndSwitch(Loop.WorldName targetWorld) {
+
+        // 保存游戏
+        yield return StartCoroutine(SaveGame());
+
+        yield return StartCoroutine(WaitAndSwitchWorld(targetWorld, Loop.WorldConstants.TIME_BEFORE_SWITCH));
 
     }
 
+    // 等待特定秒数以后开始切换
     private IEnumerator WaitAndSwitchWorld(Loop.WorldName targetWorld, float seconds) {
         
         Debug.Log("Switch world after " + seconds + " seconds...");
-        yield return new WaitForSeconds(seconds);
 
-        SaveGame();
+        yield return new WaitForSeconds(seconds);
 
         Loop.WorldManager.SwitchToWorld(targetWorld);
         _currentPlayer.SwitchToWorld(targetWorld);
@@ -162,6 +210,57 @@ public class Observer : MonoBehaviour {
         Debug.Log("Wait to Recover Player Input after " + seconds + " s.");
         yield return new WaitForSeconds(seconds);
         _currentPlayer.EnableInput();
+    }
+
+    // 保存游戏数据
+    private void SaveGameData(){
+
+        Debug.Log("-- Func : SaveGameData --");
+
+        // Flags
+        Loop.FlagManager.SaveFlagData();
+
+        // Events
+        Loop.EventManager.SaveEventData();
+
+        // Environments
+        Loop.EnvManager.SaveEnvData();
+        
+        // Worlds
+        Loop.WorldManager.SaveWorldData();
+
+        // Camera
+        Loop.CameraManager.SaveCameraData();
+
+        // Player
+        Loop.CharacterManager.SaveCharacterData();
+
+        /* ... */
+
+    }
+
+    // 装载游戏数据
+    private void LoadGameData() {
+
+        // Flags
+        Loop.FlagManager.LoadFlagData();
+
+        // Events
+        Loop.EventManager.LoadEventData();
+
+        // Environments
+        Loop.EnvManager.LoadEnvData();
+
+        // Worlds
+        Loop.WorldManager.LoadWorldData();
+
+        // Camera
+        Loop.CameraManager.RecoverCamera();
+
+        // Player
+        Loop.CharacterManager.SaveCharacterData();
+
+        /* ... */
     }
     
 }

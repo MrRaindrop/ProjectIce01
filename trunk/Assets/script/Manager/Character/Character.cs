@@ -8,7 +8,7 @@ namespace Loop
     {
 
         // fields
-        protected GameObject _gameObject;
+        public GameObject _attachedGameObject;
 
         protected bool _isAlive;          // 是否还活着
         protected bool _isAvailable;
@@ -19,9 +19,9 @@ namespace Loop
 
         // properties
 
-        public GameObject GameObject {
-            get { return _gameObject; }
-            set { _gameObject = value; }
+        public GameObject AttachedGameObject {
+            get { return _attachedGameObject; }
+            set { _attachedGameObject = value; }
         }
 
         public bool IsAlive {
@@ -48,12 +48,12 @@ namespace Loop
 
         // 获取绝对坐标
         public virtual Vector3 GetPosition() {
-            return GameObject.transform.position;
+            return AttachedGameObject.transform.position;
         }
 
         // 获取相对当前世界的坐标
         public virtual Vector3 GetRelativePosition() {
-            return GameObject.transform.position - WorldManager.GetCurrentWorld().WorldPos;
+            return AttachedGameObject.transform.position - WorldManager.GetCurrentWorld().WorldPos;
         }
 
         // 攻击
@@ -74,6 +74,9 @@ namespace Loop
         // 死亡
         public virtual void Die() {
             Debug.Log("Creature Die!");
+            _isAlive = false;
+
+            // TODO...
         }
 
         // 查看是否可以行动
@@ -84,12 +87,12 @@ namespace Loop
 
         // 禁止行动
         public virtual void DisableAct() {
-
+            _isAvailable = false;
         }
 
         // 恢复行动
         public virtual void EnableAct() {
-
+            _isAvailable = true;
         }
 
     }
