@@ -11,6 +11,7 @@ namespace Loop
         protected GameObject _gameObject;
 
         protected bool _isAlive;          // 是否还活着
+        protected bool _isAvailable;
 
         protected float _moveSpeed;     // 移动速度
         protected float _runSpeed;      // 跑步速度
@@ -45,6 +46,16 @@ namespace Loop
 
         // methods
 
+        // 获取绝对坐标
+        public virtual Vector3 GetPosition() {
+            return GameObject.transform.position;
+        }
+
+        // 获取相对当前世界的坐标
+        public virtual Vector3 GetRelativePosition() {
+            return GameObject.transform.position - WorldManager.GetCurrentWorld().WorldPos;
+        }
+
         // 攻击
         public virtual void Attack() {
             Debug.Log("Creature Attack!");
@@ -63,6 +74,22 @@ namespace Loop
         // 死亡
         public virtual void Die() {
             Debug.Log("Creature Die!");
+        }
+
+        // 查看是否可以行动
+        public virtual bool IsAvailable(){
+            // TODO ...
+            return _isAvailable;
+        }
+
+        // 禁止行动
+        public virtual void DisableAct() {
+
+        }
+
+        // 恢复行动
+        public virtual void EnableAct() {
+
         }
 
     }

@@ -37,10 +37,10 @@ public class TriggerFlags : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         
-        // 测试是否满足条件flag
+        // 测试是否满足条件flag, 如果不满足条件则不做任何动作
         if (Loop.FlagManager.TestFlags(conditionFlags, conditionFlagsValue)) {
 
-            // 执行标志设置和更改逻辑
+            // 满足条件测试则进行标志设置和更改
             for (int i = 0; i < Loop.FlagConstants.TOTAL_NUM; i++) {
 
                 if (isToReverse[i])

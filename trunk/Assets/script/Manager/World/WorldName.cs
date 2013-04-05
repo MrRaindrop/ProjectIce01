@@ -7,7 +7,7 @@ namespace Loop
     public enum WorldName {
         
         Black = 0,
-        Blue = 1,
+        Yellow = 1,
 
     }
 

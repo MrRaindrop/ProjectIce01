@@ -6,13 +6,6 @@ namespace Loop
 
     public static class EnvManager
     {
-        public static float playerBaseMoveSpeed = 10.0f;
-        public static float playerBaseRunSpeed = 20.0f;
-        public static float playerBaseJumpSpeed = 10.0f;
-
-        public static float playerCurrentMoveSpeed = 10.0f;
-        public static float playerCurrentRunSpeed = 20.0f;
-        public static float playerCurrentJumpSpeed = 10.0f;
         
         public static float gravity = 20.0f;
         public static GravityLevel currentGLevel = GravityLevel.Level2;
@@ -62,24 +55,6 @@ namespace Loop
                 return -1;
         }
 
-        // 根据环境数值计算角色能力值
-        public static void CalculatePlayerCapability(){
-
-            /* TODO : 根据环境计算 */
-
-            // playerCurrentJumpSpeed = ...
-            // playerCurrentMoveSpeed = ...
-            // playerCurrentRunSpeed = ...
-
-            Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
-            Player p = ob.GetCurrentPlayer();
-            if (p != null) {
-                p.MoveSpeed = playerCurrentMoveSpeed;
-                p.RunSpeed = playerCurrentRunSpeed;
-                p.JumpSpeed = playerCurrentJumpSpeed;
-            }
-
-        }
     }
 
     public enum GravityLevel{

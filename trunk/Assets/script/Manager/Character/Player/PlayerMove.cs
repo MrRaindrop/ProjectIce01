@@ -10,14 +10,14 @@ public class PlayerMove : MonoBehaviour {
 
     private Vector3 _moveDirection;
 
-    private CharacterController ct;
+    private CharacterController ct;     // 角色控制器
 
-    private GameObject _camMap;
-    private GameObject _camMain;
+    private GameObject _camMap;     // 地图摄像机
+    private GameObject _camMain;    // 主摄像机
 
-    private GameObject _obGameObject;
-    private Observer _observer;
-    private Loop.Player _currentPlayer;
+    private GameObject _obGameObject;   // observer的物件
+    private Observer _observer;         // observer的类脚本
+    private Loop.Player _currentPlayer;     // Player类的当前实例化对象
 
     public bool _isMapFlag = false;     // 地图切换状态标志（是否处于大地图状态）
     public bool _playerAvailable = true;      // 角色是否可以行动（角色静默状态标志）
@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour {
         _observer = _obGameObject.GetComponent<Observer>();
         _currentPlayer = _observer.GetCurrentPlayer();
 
+        // 获取当前实例化player对象的移动能力数值
         moveSpeed = _currentPlayer.MoveSpeed;
         runSpeed = _currentPlayer.RunSpeed;
         jumpSpeed = _currentPlayer.JumpSpeed;
@@ -44,7 +45,7 @@ public class PlayerMove : MonoBehaviour {
         ct = GetComponent<CharacterController>();
 
         _camMap = GameObject.Find("CameraMap");
-        _camMain = GameObject.Find("CameraMain");
+        _camMain = GameObject.Find("Main Camera");
 
         if (_camMain != null)
             _camMain.camera.enabled = true;
@@ -55,7 +56,6 @@ public class PlayerMove : MonoBehaviour {
 
         _playerAvailable = true;
         _inputAvailable = true;
-
         
     }
 	
@@ -141,5 +141,16 @@ public class PlayerMove : MonoBehaviour {
     // 接受玩家输入
     public void EnableInput() {
         _inputAvailable = true;
+    }
+
+    // 角色转移到特定名字的世界
+    public void MoveToWorld(Loop.WorldName name) {
+
+        Loop.World sourceWorld = Loop.WorldManager.GetPrevWorld();
+        Debug.Log("Source WorldPos : " + sourceWorld.WorldPos);
+        Loop.World targetWorld = Loop.WorldManager.GetWorld(name);
+        Debug.Log("Target WorldPos: " + targetWorld.WorldPos);
+        
+        transform.Translate(targetWorld.WorldPos - sourceWorld.WorldPos, Space.World);
     }
 }

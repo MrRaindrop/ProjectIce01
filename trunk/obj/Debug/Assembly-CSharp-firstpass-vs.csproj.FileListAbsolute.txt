@@ -1,0 +1,10 @@
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\Temp\bin\Debug\Assembly-CSharp-firstpass.dll
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\Temp\bin\Debug\UnityEditor.dll
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\Temp\bin\Debug\UnityEngine.dll
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\Temp\bin\Debug\Mono.Cecil.dll
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\Temp\bin\Debug\nunit.framework.dll
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\obj\Debug\ResolveAssemblyReference.cache
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\obj\Debug\Assembly-CSharp-firstpass.dll
+D:\Mr.Raindrop\Github\NewRep\ProjectIce01\trunk\obj\Debug\Assembly-CSharp-firstpass.pdb

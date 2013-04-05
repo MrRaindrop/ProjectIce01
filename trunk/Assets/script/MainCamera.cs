@@ -4,8 +4,8 @@ using System.Collections;
 public class MainCamera : MonoBehaviour {
 
     public Transform target;
-    private float height = 3.0f;    // 摄像机与target相对高度
-    private float distance = 10.0f;     // 摄像机与target在z轴上的距离
+    private float height = 0.0f;    // 摄像机与target相对高度
+    private float distance = 15.0f;     // 摄像机与target在z轴上的距离
 
     public float heightDamping = 10.0f;
     public float moveDamping = 10.0f;
@@ -27,8 +27,9 @@ public class MainCamera : MonoBehaviour {
     public void CameraFollow(Transform target)
     {
 
-        if (!target)
+        if (!target) {
             return;
+        }
 
         // Calculate the current rotation angles
         float wantedMove = target.position.x;

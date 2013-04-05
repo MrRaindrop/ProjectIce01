@@ -60,7 +60,7 @@ public class TriggerEvent : MonoBehaviour {
             // ²âÊÔÌõ¼ş
             if (Loop.EventManager.EventArray[(int)eventType].IsAllPrevEventsValid()) {
                 // do something
-                Loop.EventManager.FireEvent(Loop.EventManager.EventArray[(int)eventType]);
+                Loop.EventManager.FireEvent(eventType);
             }
 
         }
