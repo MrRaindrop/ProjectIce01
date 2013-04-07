@@ -112,7 +112,9 @@ namespace Loop
         }
 
         // 初始化世界数组
-        public static void InitWordArray() {
+        public static void InitWorldArray() {
+
+            Debug.Log("-- Func : WorldManager.InitWorldArray --");
             
             _worldArray = new World[WorldConstants.WORLDS_NUM];
 

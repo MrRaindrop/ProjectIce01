@@ -47,6 +47,8 @@ namespace Loop
             PushEventQueue(EventArray[(int)e]);
         }
 
+       
+
         public static void PushEventQueue(Event e) {
             _eventQueue.Enqueue(e.Index);
         }
@@ -61,8 +63,8 @@ namespace Loop
             return _eventQueue.Count == 0;
         }
 
-        public static void AddEventHandler(uint eIndex, Loop.Event.Handler handler) {
-            _eventArray[eIndex].AddHandler(handler);
+        public static void AddEventHandler(EventType type, Loop.Event.Handler handler) {
+            _eventArray[(int)type].AddHandler(handler);
         }
 
         // 保存事件相关的数据
@@ -105,11 +107,8 @@ namespace Loop
 
             /* TODO: 预设所有事件的序列号、先序条件事件、延迟触发时间、消亡时间 */
 
-            //_eventArray[(int)EventType.AfterSaveGame] = new Event((int)EventType.AfterSaveGame);
-            //_eventArray[(int)EventType.BeforeSaveGame] = new Event((int)EventType.BeforeSaveGame);
-            //_eventArray[(int)EventType.SaveGame] = new Event((int)EventType.SaveGame);
-
             _eventArray[(int)EventType.PauseGame] = new Event((int)EventType.PauseGame);
+
             _eventArray[(int)EventType.SwitchToWorld0] = new Event((int)EventType.SwitchToWorld0);
             _eventArray[(int)EventType.SwitchToWorld1] = new Event((int)EventType.SwitchToWorld1);
 
@@ -134,38 +133,26 @@ namespace Loop
 
         // 绑定事件处理器
         public static void InitBindingHandlers() {
-            
+
+            Debug.Log("-- Func : EventManager.InitBindingHandlers --");
+
             /* TODO: 绑定处理器到事件，可绑定多个 */
 
             // Event GetKey1 for Example
-            AddEventHandler((uint)EventType.GetKey1, delegate(){
+            AddEventHandler(EventType.GetKey1, delegate(){
                                
                 Debug.Log("Handler : Player Get Key 1!");
 
             });
 
-            //AddEventHandler((uint)EventType.AfterSaveGame, delegate(){
-            //    Debug.Log("Event : After save game!");
-            //    // TODO
-
-            //});
-
-            //AddEventHandler((uint)EventType.BeforeSaveGame, delegate(){
-            //    Debug.Log("Event : Before save game!");
-            //});
-
-            //AddEventHandler((uint)EventType.SaveGame, delegate(){
-            //    Debug.Log("Event : Save game!");
-            //});
-
-            AddEventHandler((uint)EventType.PauseGame, delegate(){
+            AddEventHandler(EventType.PauseGame, delegate(){
                 Debug.Log("Event : Pause game!");
 
                 // TODO
 
             });
 
-            AddEventHandler((uint)EventType.SwitchToWorld0, delegate(){
+            AddEventHandler(EventType.SwitchToWorld0, delegate(){
                 Debug.Log("Event : Switch to world 0!");
 
                 Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
@@ -173,7 +160,7 @@ namespace Loop
 
             });
 
-            AddEventHandler((uint)EventType.SwitchToWorld1, delegate(){
+            AddEventHandler(EventType.SwitchToWorld1, delegate(){
                 Debug.Log("Event : Switch to world 1!");
 
                 Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();

@@ -19,7 +19,8 @@ namespace Loop
         protected ArrayList _prevEvents;  // 先序条件（事件序号列表）
 
         // 事件的构造函数，指定事件的序号
-        public Event(uint index) {
+        public Event(uint index)
+        {
             _index = index;
             _isAsync = false;
             _isFiredOnce = false;
@@ -31,7 +32,8 @@ namespace Loop
         }
 
         // 事件的构造函数，指定事件的序号、是否异步执行
-        public Event(uint index, bool isAsync) {
+        public Event(uint index, bool isAsync)
+        {
             _index = index;
             _isAsync = isAsync;
             _isFiredOnce = false;
@@ -43,7 +45,8 @@ namespace Loop
         }
 
         // 事件构造函数，并指定事件的序号、延迟处理时间、失效时间
-        public Event(uint index, float delayPeriod, float expiredPeriod = 0f) {
+        public Event(uint index, float delayPeriod, float expiredPeriod = 0f)
+        {
             _index = index;
             _isAsync = false;
             _isFiredOnce = false;
@@ -55,7 +58,8 @@ namespace Loop
         }
 
         // 事件构造函数，并指定事件的序号、延迟处理时间、失效时间、是否异步执行
-        public Event(uint index, bool isAsync,  float delayPeriod, float expiredPeriod = 0f) {
+        public Event(uint index, bool isAsync, float delayPeriod, float expiredPeriod = 0f)
+        {
             _index = index;
             _isAsync = isAsync;
             _isFiredOnce = false;
@@ -74,12 +78,14 @@ namespace Loop
             set { _isAsync = value; }
         }
 
-        public uint Index {
+        public uint Index
+        {
             get { return _index; }
             set { _index = value; }
         }
 
-        public bool IsFiredOnce {
+        public bool IsFiredOnce
+        {
             get { return _isFiredOnce; }
             set { _isFiredOnce = value; }
         }
@@ -109,23 +115,27 @@ namespace Loop
         }
 
         // 增加某个事件(的序列号)做为先序条件之一
-        public void AddPrevEvents(uint index){
+        public void AddPrevEvents(uint index)
+        {
             if (_prevEvents.Contains(index))
                 return;
             _prevEvents.Add(index);
         }
 
         // 从先序条件中去掉某个事件(的序列号)
-        public void RmvPrevEvents(uint index){
+        public void RmvPrevEvents(uint index)
+        {
             if (_prevEvents.Contains(index))
                 _prevEvents.Remove(index);
         }
 
         // 测试所有条件事件是否都曾经发生过
-        public bool IsAllPrevEventsFired() {
-            if(_prevEvents.Count == 0)
+        public bool IsAllPrevEventsFired()
+        {
+            if (_prevEvents.Count == 0)
                 return true;
-            foreach(uint index in _prevEvents){
+            foreach (uint index in _prevEvents)
+            {
                 if (EventManager.EventArray[index].IsFiredOnce == false)
                     return false;
             }
@@ -148,12 +158,14 @@ namespace Loop
         }
 
         // 添加事件处理
-        public void AddHandler(Handler h) {
+        public void AddHandler(Handler h)
+        {
             _handlers += h;
         }
 
         // 执行事件处理函数
-        public virtual void ExecHanlders(){
+        public virtual void ExecHanlders()
+        {
             _handlers();
         }
 

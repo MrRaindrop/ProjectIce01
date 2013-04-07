@@ -8,11 +8,12 @@ using System.Collections;
 
 public class Observer : MonoBehaviour {
 
-    private uint _currentEventIndex = 0;    // 事件队列中当前处理的事件的序号
+    private uint _currentEventIndex;    // 事件队列中当前处理的事件的序号
     private Loop.Player _currentPlayer;     // 当前玩家实例
 
     void Awake() {
 
+        _currentEventIndex = 0;
         Init();
 
     }
@@ -30,6 +31,7 @@ public class Observer : MonoBehaviour {
     void Update() {
 
         StartCoroutine(PopAndExecEvent());
+        StartCoroutine(PopAndExecMessage());
 
     }
 
@@ -65,6 +67,27 @@ public class Observer : MonoBehaviour {
         }
     }
 
+    // 取消息队列并执行（区分同步和异步事件的执行方式）
+    public IEnumerator PopAndExecMessage() {
+        if (!Loop.MessageManager.IsMessageQueueEmpty()) {
+
+            Loop.Message currentMessage = Loop.MessageManager.PopMessageQueue();
+
+            Debug.Log("Pop Message Queue and execute MessageHandler : " + currentMessage.Type);
+
+            float cd = currentMessage.DelayPeriod;
+
+            if (cd != 0) {
+                yield return StartCoroutine(DelayExecMessage(currentMessage, cd));
+            } else {
+                currentMessage.ExecHanlders();
+            }
+
+        }
+        else
+            yield return null;
+    }
+
     // 初始化新游戏
     private void Init() {
 
@@ -95,14 +118,17 @@ public class Observer : MonoBehaviour {
         Loop.EventManager.InitEventArray();
         Loop.EventManager.InitEventQueue();
 
+        // 初始化消息队列
+        Loop.MessageManager.InitMessageQueue();
+
         // 绑定事件处理
         Loop.EventManager.InitBindingHandlers();
 
         // 初始化世界数组
-        Loop.WorldManager.InitWordArray();
+        Loop.WorldManager.InitWorldArray();
 
         // 初始化摄像机
-        Loop.CameraManager.initAllCameras();
+        Loop.CameraManager.InitAllCameras();
     }
 
     // 实例化玩家角色类
@@ -141,6 +167,13 @@ public class Observer : MonoBehaviour {
             yield return new WaitForSeconds(expire);
             e.IsValid = false;
         }
+    }
+
+    // 延迟处理消息
+    private IEnumerator DelayExecMessage(Loop.Message msg, float delay){
+
+        yield return new WaitForSeconds(delay);
+        msg.ExecHanlders();
 
     }
 
@@ -232,7 +265,7 @@ public class Observer : MonoBehaviour {
         // Camera
         Loop.CameraManager.SaveCameraData();
 
-        // Player
+        // Characters
         Loop.CharacterManager.SaveCharacterData();
 
         /* ... */
@@ -257,8 +290,11 @@ public class Observer : MonoBehaviour {
         // Camera
         Loop.CameraManager.RecoverCamera();
 
-        // Player
-        Loop.CharacterManager.SaveCharacterData();
+        // Characters
+        Loop.CharacterManager.LoadCharacterData();
+
+        // 恢复主角位置
+        Loop.CharacterManager.RecoverPlayerPosition();
 
         /* ... */
     }

@@ -32,12 +32,25 @@ namespace Loop {
         public void  SaveData() {
             PlayerPrefsX.SetBool("isAlive", _isAlive);
             PlayerPrefsX.SetBool("isAvailable", _isAvailable);
+            PlayerPrefsX.SetVector3("playerPosition", AttachedGameObject.transform.position);
         }
 
         // 装载角色数据
         public void  LoadData() {
             _isAlive = PlayerPrefsX.GetBool("isAlive");
             _isAvailable = PlayerPrefsX.GetBool("isAvailable");
+        }
+
+        // 恢复保存游戏时的主角位置
+        public void RecoverPosition() {
+            Vector3 pos = PlayerPrefsX.GetVector3("playerPosition");
+            TranslateTo(pos);
+        }
+
+        // 移动主角到特定位置
+        public void TranslateTo(Vector3 pos) {
+            Vector3 dis = pos - _attachedGameObject.transform.position;
+            _attachedGameObject.transform.Translate(dis, Space.World);
         }
 
         // 攻击

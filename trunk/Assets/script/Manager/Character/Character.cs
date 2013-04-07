@@ -8,7 +8,7 @@ namespace Loop
     {
 
         // fields
-        public GameObject _attachedGameObject;
+        protected GameObject _attachedGameObject;
 
         protected bool _isAlive;          // 是否还活着
         protected bool _isAvailable;
@@ -45,6 +45,29 @@ namespace Loop
         }
 
         // methods
+
+        // 构造函数
+        public Character() {
+            _attachedGameObject = null;
+            _isAlive = false;
+            _isAvailable = false;
+        }
+
+        ~Character() {
+
+            MessageManager.SendMessage(MessageType.DestroyGameObject, delegate() { 
+                GameObject.Destroy(this._attachedGameObject);
+            });
+
+        }
+
+        // 连接物件（将对应物件实例的引用存到本角色实例）
+        protected void AttachTo(GameObject go) {
+            if (go != null)
+                _attachedGameObject = go;
+            else
+                throw new System.NullReferenceException("@ Character.AttachTo()");
+        }
 
         // 获取绝对坐标
         public virtual Vector3 GetPosition() {

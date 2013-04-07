@@ -59,12 +59,9 @@ namespace Loop {
         GetKey50,
         
         PauseGame = 51,
-        BeforeSaveGame = 52,   
-        SaveGame = 53,
-        AfterSaveGame = 54,
+
         SwitchToWorld0 = 55,
         SwitchToWorld1 = 56,
-
 
         OpenGate1 = 101,
         OpenGate2 = 102,
