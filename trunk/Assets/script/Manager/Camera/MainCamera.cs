@@ -45,7 +45,6 @@ public class MainCamera : MonoBehaviour {
             Debug.Log("Key \"-\"!");
             PullCamera();
         }
-
 	}
 
     public void CameraFollow(Transform target)
@@ -87,7 +86,6 @@ public class MainCamera : MonoBehaviour {
         }
 
         Debug.Log(_distance);
-
     }
 
     // À­ÉãÏñ»ú

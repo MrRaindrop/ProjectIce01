@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\script\Manager\Camera\CameraConstants.cs" />
+     <Compile Include="Assets\script\Manager\Camera\CameraEffect.cs" />
      <Compile Include="Assets\script\Manager\Camera\CameraManager.cs" />
      <Compile Include="Assets\script\Manager\Camera\MainCamera.cs" />
      <Compile Include="Assets\script\Manager\Character\Character.cs" />

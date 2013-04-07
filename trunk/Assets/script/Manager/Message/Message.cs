@@ -125,6 +125,7 @@ namespace Loop
 
         // 执行消息处理器
         public void ExecHanlders() {
+            Debug.Log("-- Func : Masseage.ExecHandlers --");
             _handlers();
         }
 
