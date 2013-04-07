@@ -19,12 +19,15 @@ public class PlayerMove : MonoBehaviour {
     private Observer _observer;         // observer的类脚本
     private Loop.Player _currentPlayer;     // Player类的当前实例化对象
 
-    public bool _isMapFlag = false;     // 地图切换状态标志（是否处于大地图状态）
-    public bool _inputAvailable = false;      // 是否响应输入（按键静默状态标志）
+    public bool _isMapFlag;     // 地图切换状态标志（是否处于大地图状态）
+    public bool _inputAvailable;      // 是否响应输入（按键静默状态标志）
 
 	// Use this for initialization
 	void Awake () {
-        
+
+        _isMapFlag = false;
+        _inputAvailable = false;
+
 	}
 
     void Start() {
@@ -107,8 +110,6 @@ public class PlayerMove : MonoBehaviour {
 
             // gravity
             _moveDirection.y -= gravity * Time.deltaTime;
-
-            
 
             ct.Move(_moveDirection * Time.deltaTime);
 
