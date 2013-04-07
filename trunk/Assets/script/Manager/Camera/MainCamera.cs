@@ -45,6 +45,12 @@ public class MainCamera : MonoBehaviour {
             Debug.Log("Key \"-\"!");
             PullCamera();
         }
+
+        // ²âÊÔÉãÏñ»úÕğ¶¯
+        if (Input.GetKeyDown(KeyCode.V)) {
+            Debug.Log("Key \"V\"!");
+            Loop.CameraManager.VibrateMainCamera2(0.5f);
+        }
 	}
 
     public void CameraFollow(Transform target)

@@ -12,7 +12,26 @@ namespace Loop
         private static Camera _camMain;
         private static Camera _camMap;
 
+        private static float _effectGap = 3.0f;
+        private static float _effectFps = 60.0f;
+        private static float _shakeDelta = 0.005f;
+
         // properties
+
+        public static float EffectGap {
+            get { return CameraManager._effectGap; }
+            set { CameraManager._effectGap = value; }
+        }
+
+        public static float EffectFps {
+            get { return CameraManager._effectFps; }
+            set { CameraManager._effectFps = value; }
+        }
+
+        public static float ShakeDelta {
+            get { return CameraManager._shakeDelta; }
+            set { CameraManager._shakeDelta = value; }
+        }
 
         public static Camera CamMain {
             get { return CameraManager._camMain; }
@@ -33,16 +52,6 @@ namespace Loop
 
             _camMain = Camera.main;
             _camMap = GameObject.Find("CameraMap").camera;
-        }
-
-        // 推主摄像机
-        public static void PushMainCamera() {
-            _camMain.GetComponent<MainCamera>().PushCamera();
-        }
-        
-        // 拉主摄像机
-        public static void PullMainCamera() {
-            _camMain.GetComponent<MainCamera>().PullCamera();
         }
 
         // 移动主摄像机
@@ -100,6 +109,32 @@ namespace Loop
             TranslateMainCamera(dis, Space.World);
         }
 
+        // 推主摄像机
+        public static void PushMainCamera() {
+            _camMain.gameObject.GetComponent<MainCamera>().PushCamera();
+        }
+
+        // 拉主摄像机
+        public static void PullMainCamera() {
+            _camMain.gameObject.GetComponent<MainCamera>().PullCamera();
+        }
+
+        // 主摄像机执行震动效果1
+        public static void VibrateMainCamera1(float gap) {
+
+            _effectGap = gap;
+            _camMain.gameObject.AddComponent<CameraVibrate1>();
+
+        }
+
+        // 主摄像机执行震动效果2
+        public static void VibrateMainCamera2(float gap, float shakeDelta = 0.005f, float fps = 60f) {
+
+            _effectGap = gap;
+            _shakeDelta = shakeDelta;
+            _effectFps = fps;
+            _camMain.gameObject.AddComponent<CameraVibrate2>();
+        }
     }
 
 }
