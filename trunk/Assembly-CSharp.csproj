@@ -83,6 +83,8 @@
      <Compile Include="Assets\script\Manager\World\WorldManager.cs" />
      <Compile Include="Assets\script\Manager\World\WorldName.cs" />
      <Compile Include="Assets\script\Observer.cs" />
+     <Compile Include="Assets\script\Utility\Fog.cs" />
+     <Compile Include="Assets\script\Utility\KdTree.cs" />
      <Compile Include="Assets\script\Utility\PlayerPrefsX.cs" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Standard Assets\Glass Refraction (Pro Only)\Sources\Shaders\Glass-Stained-BumpDistort.shader" />

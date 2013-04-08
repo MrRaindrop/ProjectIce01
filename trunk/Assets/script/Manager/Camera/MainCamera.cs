@@ -15,8 +15,8 @@ public class MainCamera : MonoBehaviour {
 	// Use this for initialization
     void Start() {
 
-        _height = Loop.CameraConstants.CAM_HEIGHT_MIN;
-        _distance = Loop.CameraConstants.CAM_DIS_MIN;
+        _height = Loop.CameraConstants.CAM_HEIGHT_MID;
+        _distance = Loop.CameraConstants.CAM_DIS_MID;
 
         heightDamping = Loop.CameraConstants.CAM_HEIGHT_DAMP;
         moveDamping = Loop.CameraConstants.CAM_MOVE_DAMP;

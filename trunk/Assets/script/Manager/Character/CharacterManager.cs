@@ -36,6 +36,15 @@ namespace Loop
 
         // methods
 
+        // 获取玩家实例
+        public static Player GetPlayerInstance() {
+            Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
+            Player player = ob.GetCurrentPlayer();
+            if (player == null)
+                throw new System.NullReferenceException("@ CharacterManager.GetPlayerInstance()");
+            return player;
+        }
+
         // 根据环境数值计算角色能力值
         public static void CalculatePlayerCapability()
         {
