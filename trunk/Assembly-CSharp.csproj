@@ -70,6 +70,9 @@
      <Compile Include="Assets\script\Manager\Flag\FlagConstants.cs" />
      <Compile Include="Assets\script\Manager\Flag\FlagManager.cs" />
      <Compile Include="Assets\script\Manager\Flag\FlagType.cs" />
+     <Compile Include="Assets\script\Manager\Light\LightConstants.cs" />
+     <Compile Include="Assets\script\Manager\Light\LightFollow.cs" />
+     <Compile Include="Assets\script\Manager\Light\LightManager.cs" />
      <Compile Include="Assets\script\Manager\Message\Message.cs" />
      <Compile Include="Assets\script\Manager\Message\MessageManager.cs" />
      <Compile Include="Assets\script\Manager\Message\MessageType.cs" />

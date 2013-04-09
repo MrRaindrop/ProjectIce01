@@ -79,8 +79,17 @@ public class PlayerMove : MonoBehaviour {
                         _moveDirection.y = jumpSpeed;
                 }
 
+                float x = 0;
+
+                // 转向
+                if ((x = Input.GetAxis("Horizontal")) < 0) {
+                    transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+                } else if (x > 0) {
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+                }
+                    
                 // horizontal move
-                _moveDirection.x = Input.GetAxis("Horizontal") * moveSpeed;
+                _moveDirection.x = x * moveSpeed;
             }
 
             // 侦测地图切换按钮输入
