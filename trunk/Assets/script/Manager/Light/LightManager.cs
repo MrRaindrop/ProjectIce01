@@ -13,10 +13,9 @@ namespace Loop {
             Light lt = _playerLight.light;
             lt.intensity = Mathf.Lerp(lt.intensity, LightConstants.PLAYER_LIGHT_INTENSITY,
                 Time.deltaTime * LightConstants.PLAYER_LIGHT_UP_DAMP);
+            Debug.Log(lt.intensity);
             yield return null;
 
         }
-
     }
-
 }

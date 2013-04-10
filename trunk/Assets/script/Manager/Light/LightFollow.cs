@@ -13,19 +13,20 @@ public class LightFollow : MonoBehaviour {
 	void Start () {
 
         light.range = Loop.LightConstants.PLAYER_LIGHT_RANGE;
-        light.intensity = Loop.LightConstants.PLAYER_LIGHT_INTENSITY;
+        //light.intensity = Loop.LightConstants.PLAYER_LIGHT_INTENSITY;
+        light.intensity = 0;
 
         _ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
         _player = _ob.GetCurrentPlayer();
 
-        //_time = 3.0f;
+        _time = 3.0f;
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        //Loop.LightManager.PlayerLightUp();
+        StartCoroutine(Loop.LightManager.PlayerLightUp());
 
         _plPos = _player.AttachedGameObject.transform.position;
         transform.position = _plPos + new Vector3(
