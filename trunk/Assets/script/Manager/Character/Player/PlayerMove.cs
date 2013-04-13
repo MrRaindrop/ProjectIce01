@@ -70,6 +70,27 @@ public class PlayerMove : MonoBehaviour {
 
             if (_currentPlayer.IsAvailable()) {
                 
+                // test world switch
+                if (Input.GetKeyDown(KeyCode.Alpha1)) {
+                    Debug.Log("1 input!");
+                    if(0 != Loop.WorldManager.GetCurrentWorldIndex())
+                        _observer.SwitchWorld((Loop.WorldName)0);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Alpha2)) {
+                    if (1 != Loop.WorldManager.GetCurrentWorldIndex())
+                        _observer.SwitchWorld((Loop.WorldName)1);
+                }
+
+                if (Input.GetKeyDown(KeyCode.Q)) {
+                    _observer.SwitchWorld(Loop.WorldManager.GetPrevWorldName());
+                }
+
+                if (Input.GetKeyDown(KeyCode.Tab)) {
+                    _observer.SwitchWorld((Loop.WorldName)(
+                        (1 + Loop.WorldManager.GetCurrentWorldIndex()) % Loop.WorldConstants.WORLDS_NUM));
+                }
+
                 // ’Ï≤‚Ã¯‘æ∞¥≈• ‰»Î
                 if (ct.isGrounded)
                 {

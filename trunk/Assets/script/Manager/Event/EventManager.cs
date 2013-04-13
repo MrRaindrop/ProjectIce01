@@ -109,8 +109,8 @@ namespace Loop
 
             _eventArray[(int)EventType.PauseGame] = new Event((int)EventType.PauseGame);
 
-            _eventArray[(int)EventType.SwitchToWorld0] = new Event((int)EventType.SwitchToWorld0);
-            _eventArray[(int)EventType.SwitchToWorld1] = new Event((int)EventType.SwitchToWorld1);
+            //_eventArray[(int)EventType.SwitchToWorld0] = new Event((int)EventType.SwitchToWorld0);
+            //_eventArray[(int)EventType.SwitchToWorld1] = new Event((int)EventType.SwitchToWorld1);
 
             _eventArray[(int)EventType.GetKey1] = new SyncEvent(1, 2f, 2f);
 
@@ -152,20 +152,20 @@ namespace Loop
 
             });
 
-            AddEventHandler(EventType.SwitchToWorld0, delegate(){
-                Debug.Log("Event : Switch to world 0!");
+            //AddEventHandler(EventType.SwitchToWorld0, delegate(){
+            //    Debug.Log("Event : Switch to world 0!");
 
-                Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
-                ob.SwitchWorld((WorldName)0);
+            //    Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
+            //    ob.SwitchWorld((WorldName)0);
 
-            });
+            //});
 
-            AddEventHandler(EventType.SwitchToWorld1, delegate(){
-                Debug.Log("Event : Switch to world 1!");
+            //AddEventHandler(EventType.SwitchToWorld1, delegate(){
+            //    Debug.Log("Event : Switch to world 1!");
 
-                Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
-                ob.SwitchWorld((WorldName)1);
-            });
+            //    Observer ob = GameObject.FindWithTag("Observer").GetComponent<Observer>();
+            //    ob.SwitchWorld((WorldName)1);
+            //});
 
         }
     }

@@ -55,7 +55,7 @@ namespace Loop
 
         ~Character() {
 
-            MessageManager.SendMessage(MessageType.DestroyGameObject, delegate() { 
+            MessageManager.SendMessage(MessageType.DestroyGameObject, delegate() {
                 GameObject.Destroy(this._attachedGameObject);
             });
 

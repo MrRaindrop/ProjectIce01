@@ -153,7 +153,6 @@ public class Observer : MonoBehaviour {
         Loop.CharacterManager.CalculatePlayerCapability();
     }
 
-
     // 延迟处理事件，若失效时间不为0则做失效处理
     private IEnumerator DelayOrExpireEvent(Loop.Event e, float delay, float expire){
         
@@ -212,15 +211,7 @@ public class Observer : MonoBehaviour {
 
         _currentPlayer.DisableInput();
 
-        StartCoroutine(SaveAndSwitch(targetWorld));
-    }
-
-    private IEnumerator SaveAndSwitch(Loop.WorldName targetWorld) {
-
-        // 保存游戏
-        yield return StartCoroutine(SaveGame());
-
-        yield return StartCoroutine(WaitAndSwitchWorld(targetWorld, Loop.WorldConstants.TIME_BEFORE_SWITCH));
+        StartCoroutine(WaitAndSwitchWorld(targetWorld, Loop.WorldConstants.TIME_BEFORE_SWITCH));
 
     }
 

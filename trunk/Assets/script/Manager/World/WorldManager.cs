@@ -68,6 +68,11 @@ namespace Loop
             return (int)_prevWorld;
         }
 
+        // 获取前一个世界的名字
+        public static WorldName GetPrevWorldName() {
+            return _prevWorld;
+        }
+
         // 获取前一个世界对象
         public static World GetPrevWorld() {
             return _worldArray[(int)_prevWorld];
@@ -76,6 +81,11 @@ namespace Loop
         // 获取当前的世界编号
         public static int GetCurrentWorldIndex() {
             return (int)_currentWorld;
+        }
+
+        // get current world name
+        public static WorldName GetCurrentWorldName() {
+            return _currentWorld;
         }
 
         // 获取当前世界对象

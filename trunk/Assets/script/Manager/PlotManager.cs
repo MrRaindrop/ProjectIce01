@@ -4,7 +4,7 @@ using System.Collections;
 namespace Loop
 {
 
-    public class PlotManager {
+    public static class PlotManager {
 
 
 

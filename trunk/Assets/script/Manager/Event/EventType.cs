@@ -60,8 +60,8 @@ namespace Loop {
         
         PauseGame = 51,
 
-        SwitchToWorld0 = 55,
-        SwitchToWorld1 = 56,
+        //SwitchToWorld0 = 55,
+        //SwitchToWorld1 = 56,
 
         OpenGate1 = 101,
         OpenGate2 = 102,
