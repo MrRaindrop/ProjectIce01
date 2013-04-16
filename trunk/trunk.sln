@@ -9,6 +9,8 @@ Project("{8D0411B3-38C8-3CD8-CD8A-D9D9DB127101}") = "trunk", "Assembly-CSharp-Ed
 EndProject
 Project("{8D0411B3-38C8-3CD8-CD8A-D9D9DB127101}") = "trunk", "Assembly-UnityScript-firstpass.unityproj", "{86B659CC-1081-2BE2-8A2F-2F1FD391F4DA}"
 EndProject
+Project("{8D0411B3-38C8-3CD8-CD8A-D9D9DB127101}") = "trunk", "Assembly-UnityScript.unityproj", "{DE4D58B9-9806-231C-1C5A-BFCC2B777495}"
+EndProject
 Project("{8D0411B3-38C8-3CD8-CD8A-D9D9DB127101}") = "trunk", "Assembly-UnityScript-Editor.unityproj", "{943D1640-5581-3ACD-C0EE-4AE7496A4D0D}"
 EndProject
 Global
@@ -33,6 +35,10 @@ Global
 		{86B659CC-1081-2BE2-8A2F-2F1FD391F4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86B659CC-1081-2BE2-8A2F-2F1FD391F4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86B659CC-1081-2BE2-8A2F-2F1FD391F4DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE4D58B9-9806-231C-1C5A-BFCC2B777495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE4D58B9-9806-231C-1C5A-BFCC2B777495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE4D58B9-9806-231C-1C5A-BFCC2B777495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE4D58B9-9806-231C-1C5A-BFCC2B777495}.Release|Any CPU.Build.0 = Release|Any CPU
 		{943D1640-5581-3ACD-C0EE-4AE7496A4D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{943D1640-5581-3ACD-C0EE-4AE7496A4D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{943D1640-5581-3ACD-C0EE-4AE7496A4D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,7 +47,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																			GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
